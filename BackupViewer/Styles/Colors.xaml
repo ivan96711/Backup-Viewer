@@ -1,0 +1,35 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:BackupViewer.Styles">
+
+    <!--НЕ ИСПОЛЬЗУЮТСЯ-->
+  
+    <SolidColorBrush x:Key="MainBackgroundBrush"
+                     Color="#FF222226" />
+    <Color x:Key="MainBackgroundColor">#FF222226</Color>
+
+    <SolidColorBrush x:Key="MenuBackgroundBrush"
+                     Color="Black" />
+    <Color x:Key="MenuBackgroundColor">Black</Color>
+
+    <SolidColorBrush x:Key="SecondaryBackgroundBrush"
+                     Color="#FF444446" />
+    <Color x:Key="SecondaryBackgroundColor">#FF444446</Color>
+
+    <SolidColorBrush x:Key="ThirdBackgroundBrush"
+                     Color="#FF2F2F30" />
+    <Color x:Key="ThirdBackgroundColor">#FF2F2F30</Color>
+
+    <SolidColorBrush x:Key="IconBrush"
+                     Color="Black" />
+    <Color x:Key="IconColor">Black</Color>
+    
+    <SolidColorBrush x:Key="InactiveBrush"
+                     Color="White" />
+    <Color x:Key="InactiveColor">White</Color>
+
+    <SolidColorBrush x:Key="ActiveBrush"
+                     Color="Aqua" />
+    <Color x:Key="ActiveColor">Aqua</Color>
+    
+</ResourceDictionary>

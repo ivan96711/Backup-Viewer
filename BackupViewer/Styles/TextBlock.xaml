@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:BackupViewer.Styles">
+
+    <!--НЕ ИСПОЛЬЗУЮТСЯ-->
+    
+    <Style x:Key="TextBlockInactive"
+           TargetType="TextBlock">
+
+        <Setter Property="Foreground"
+                Value="{StaticResource InactiveBrush}" />
+        
+        <Setter Property="FontFamily"
+                Value="{StaticResource BaseFont}" />
+
+    </Style>
+
+    <Style x:Key="TextBlockActive"
+           TargetType="TextBlock">
+
+        <Setter Property="Foreground"
+                Value="{StaticResource ActiveBrush}" />
+
+        <Setter Property="FontFamily"
+                Value="{StaticResource BaseFont}" />
+
+    </Style>
+
+</ResourceDictionary>

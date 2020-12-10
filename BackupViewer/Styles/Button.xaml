@@ -1,0 +1,112 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:BackupViewer.Styles">
+
+    <!--НЕ ИСПОЛЬЗУЕТСЯ-->
+    <Style x:Key="MenuButton"
+           TargetType="Button">
+                
+        <Setter Property="Background"
+                Value="{StaticResource MenuBackgroundBrush}" />
+        
+        <Setter Property="BorderThickness"
+                Value="0" />
+
+        <Setter Property="FontFamily"
+                Value="{StaticResource BaseFont}" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Name="brd"
+                            Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Left"
+                                          VerticalAlignment="Top" />
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefaulted"
+                                 Value="true">
+                            <Setter Property="Background"
+                                    Value="{StaticResource MenuBackgroundBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver"
+                                 Value="true">
+                            <Setter Property="Background"
+                                    Value="#333336" />
+                        </Trigger>
+                        <Trigger Property="IsPressed"
+                                 Value="true">
+                            <Setter Property="Background"
+                                    Value="#FF545459" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled"
+                                 Value="false">
+                            <Setter Property="Background"
+                                    Value="{StaticResource MenuBackgroundBrush}" />
+                        </Trigger>
+                        
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--НЕ ИСПОЛЬЗУЕТСЯ-->
+    <Style x:Key="BaseButton"
+           TargetType="Button">
+
+        <Setter Property="Background"
+                Value="{StaticResource SecondaryBackgroundBrush}" />
+
+        <Setter Property="BorderThickness"
+                Value="0" />
+
+        <Setter Property="FontFamily"
+                Value="{StaticResource BaseFont}" />
+
+        <Setter Property="FontSize"
+                Value="{StaticResource Small}" />
+
+        <Setter Property="Foreground"
+                Value="{StaticResource ActiveBrush}" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Name="brd"
+                            Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefaulted"
+                                 Value="true">
+                            <Setter Property="Background"
+                                    Value="{StaticResource SecondaryBackgroundBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver"
+                                 Value="true">
+                            <Setter Property="Background"
+                                    Value="#FF58585A" />
+                        </Trigger>
+                        <Trigger Property="IsPressed"
+                                 Value="true">
+                            <Setter Property="Background"
+                                    Value="#FF787878" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled"
+                                 Value="false">
+                            <Setter Property="Foreground"
+                                    Value="{StaticResource InactiveBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

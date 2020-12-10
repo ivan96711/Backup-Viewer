@@ -1,0 +1,129 @@
+﻿<Page x:Class="BackupViewer.View.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BackupViewer.View"
+      xmlns:viewmodel="clr-namespace:BackupViewer.ViewModel"
+      mc:Ignorable="d"
+      d:DesignHeight="600"
+      d:DesignWidth="950"
+      Title="SettingsPage"
+      
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
+      xmlns:Button="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      Background="{DynamicResource MaterialDesignPaper}"
+      FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <Page.DataContext>
+        <viewmodel:SettingsPageVIewModel />
+    </Page.DataContext>
+
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Page.Resources>
+
+    <Grid>
+
+        <WrapPanel>
+            <StackPanel>
+                <TextBlock Text="Обновление"
+                           Margin="15,30,15,0"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Style="{StaticResource MaterialDesignSubtitle1TextBlock}" />
+
+                <materialDesign:Card Margin="15,0,15,30"
+                                     VerticalAlignment="Top"
+                                     HorizontalAlignment="Left"
+                                     Width="250">
+                    
+                    <StackPanel Margin="0,0,0,0">
+
+                        <TextBlock Text="{Binding currentVersion}"
+                                   MaxWidth="240"
+                                   Margin="5"
+                                   TextWrapping="Wrap"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Left"
+                                   Style="{StaticResource MaterialDesignSubtitle1TextBlock}" />
+
+                        <Button Style="{StaticResource MaterialDesignOutlinedButton}"
+                                Margin="5"
+                                Command="{Binding CheckUpdate}"
+                                Content="Проверить обновления"
+                                ToolTip="MaterialDesignOutlinedButton"
+                                HorizontalAlignment="Left" />
+
+                        <TextBlock Text="{Binding newVersion}"
+                                   Margin="5"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Left"
+                                   Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                                   Visibility="{Binding Path=visibilityUpdate, Converter={StaticResource BoolToVis}}" />
+
+                        <TextBlock Text="{Binding updateInfo.Description}"
+                                   Margin="5"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Left"
+                                   Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                                   Visibility="{Binding Path=visibilityUpdate, Converter={StaticResource BoolToVis}}" />
+                        
+                        <Button Style="{StaticResource MaterialDesignOutlinedButton}"
+                                Command="{Binding Update}"
+                                Margin="5"
+                                Content="Обновить"
+                                ToolTip="MaterialDesignOutlinedButton"
+                                HorizontalAlignment="Left"
+                                Visibility="{Binding Path=visibilityUpdate, Converter={StaticResource BoolToVis}}" />
+                    </StackPanel>
+                </materialDesign:Card>
+            </StackPanel>
+
+            <StackPanel>
+                
+                <TextBlock Text="Сценарий использования"
+                           Margin="15,30,15,0"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Style="{StaticResource MaterialDesignSubtitle1TextBlock}" />
+
+                <materialDesign:Card Margin="15,0,15,30"
+                                     VerticalAlignment="Top"
+                                     HorizontalAlignment="Left"
+                                     Width="250">
+                    <StackPanel>
+                        
+                        <UniformGrid Columns="1"
+                                     IsEnabled="False">
+                            <RadioButton Margin="4"
+                                         IsChecked="True"
+                                         Content="Резервные копии"
+                                         Style="{StaticResource MaterialDesignLightRadioButton}" />
+                            <RadioButton Margin="4"
+                                         IsChecked="False"
+                                         Content="База данных"
+                                         Style="{StaticResource MaterialDesignLightRadioButton}" />
+                        </UniformGrid>
+
+                        <TextBlock Text="При смене сценария производится полная очистка базы данных и резервных копий без возможности восстановления."
+                                   MaxWidth="240"
+                                   Margin="5"
+                                   TextWrapping="Wrap"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Left"
+                                   Style="{StaticResource MaterialDesignCaptionTextBlock}" />
+
+                    </StackPanel>
+                </materialDesign:Card>
+            </StackPanel>
+        </WrapPanel>
+
+    </Grid>
+</Page>

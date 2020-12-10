@@ -1,0 +1,119 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:BackupViewer.Styles"
+                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+    <!--НЕ ИСПОЛЬЗУЕТСЯ-->
+    <ControlTemplate x:Key="ListBoxAndDelete"
+                     TargetType="ListBoxItem">
+        
+        <Grid Height="25"
+              Margin="3,0"
+              HorizontalAlignment="Stretch">
+
+            <TextBlock Style="{StaticResource TextBlockInactive}"
+                       Text="{Binding Path}"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"/>
+
+            <Button Style="{StaticResource BaseButton}"
+                    Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.DeleteDir}"
+                    Content="Х"
+                    HorizontalAlignment="Right"
+                    Height="20"
+                    Width="20"/>
+
+        </Grid>
+        
+    </ControlTemplate>
+
+    <!--НЕ ИСПОЛЬЗУЕТСЯ-->
+    <ControlTemplate x:Key="ListBoxAndDeleteImage"
+                     TargetType="ListBoxItem">
+
+        <Grid Height="25"
+              Margin="3,0"
+              HorizontalAlignment="Stretch">
+
+            <Image Source="{Binding}"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center" />
+
+
+            <Button Style="{StaticResource BaseButton}"
+                    Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.DeleteImage}"
+                    Content="Х"
+                    HorizontalAlignment="Right"
+                    Height="20"
+                    Width="20" />
+
+        </Grid>
+
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ListBoxCategory"
+                     TargetType="ListBoxItem">
+
+        <CheckBox Style="{StaticResource MaterialDesignFilterChipCheckBox}"
+                  IsChecked="{Binding SomeItemSelected, Mode=TwoWay}" 
+                  Content="{Binding Name}"/>
+
+        <!--<ControlTemplate.Triggers>
+            <Trigger Property="IsSelected"
+                     Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                            Storyboard.TargetName="text"
+                                            From="{StaticResource InactiveColor}"
+                                            To="{StaticResource ActiveColor}"
+                                            SpeedRatio="7" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                            Storyboard.TargetName="text"
+                                            From="{StaticResource ActiveColor}"
+                                            To="{StaticResource InactiveColor}"
+                                            SpeedRatio="7" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+        </ControlTemplate.Triggers>-->
+
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="MainListBoxCategory"
+                     TargetType="ListBoxItem">
+
+        <Button Style="{StaticResource MaterialDesignOutlinedButton}"
+                Margin="5"
+                Height="30"
+                materialDesign:ButtonAssist.CornerRadius="13"
+                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Page}, Path=DataContext.CategoryClick}"
+                CommandParameter="{Binding Path=Value}">
+            <TextBlock Text="{Binding Path=Value}" />
+        </Button>
+
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="AllListBoxCategory"
+                     TargetType="ListBoxItem">
+
+        <Button Style="{StaticResource MaterialDesignOutlinedButton}"
+                Margin="5"
+                Height="30"
+                materialDesign:ButtonAssist.CornerRadius="13"
+                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Page}, Path=DataContext.CategoryClick}"
+                CommandParameter="{Binding Path=Name}"
+                ToolTip="{Binding Path=Name}">
+            <TextBlock Text="{Binding Path=Name}" />
+        </Button>
+
+    </ControlTemplate>
+</ResourceDictionary>

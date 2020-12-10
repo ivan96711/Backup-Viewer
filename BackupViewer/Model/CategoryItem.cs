@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BackupViewer.Model
+{
+    public class CategoryItem : BaseVM
+    {
+        public string Value { get; set; }
+
+        //public CategoryItem(string value)
+        //{
+        //    Value = value;
+        //}
+    }
+}

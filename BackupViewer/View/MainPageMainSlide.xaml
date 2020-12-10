@@ -1,0 +1,179 @@
+﻿<Page x:Class="BackupViewer.View.MainPageMainSlide"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BackupViewer.View"
+      xmlns:Button="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      
+      Title="MainPageMainSlide"
+      xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
+      xmlns:viewmodel="clr-namespace:BackupViewer.ViewModel"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      Background="{DynamicResource MaterialDesignPaper}"
+      FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <Page.DataContext>
+        <viewmodel:MainPageMainSlideViewModel />
+    </Page.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1">
+
+            <ScrollViewer>
+                <StackPanel>
+                    <Grid ToolTip="{Binding SelectedData.Name}"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top">
+
+                        <TextBlock Text="{Binding SelectedData.Name}"
+                                   Style="{StaticResource MaterialDesignHeadline2TextBlock}"
+                                   FontSize="45"
+                                   Margin="10,0,10,0" />
+                    </Grid>
+
+                    <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                             SelectionMode="Multiple"
+                             ItemsSource="{Binding SelectedData.Category}"
+                             BorderThickness="0"
+                             Margin="5,0,0,0">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel IsItemsHost="True" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Template"
+                                        Value="{StaticResource MainListBoxCategory}" />
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <Button Content="Открыть"
+                                ToolTip="Открыть папку с содержимым"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                Margin="10,5,5,5"
+                                Command="{Binding OpenFolder}"
+                                CommandParameter="{Binding SelectedData}" />
+
+                        <Button Content="Редактировать"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                Margin="10,5,5,5"
+                                IsEnabled="False" />
+
+                        <Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                                Content="Удалить"
+                                ToolTip="Удалить объект"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                Margin="10,5,5,5">
+                            <Button.CommandParameter>
+                                <StackPanel Margin="16"
+                                            Orientation="Vertical">
+                                    <TextBlock Text="Вы действительно хотите удалить?" />
+
+                                    <Grid Margin="0,16,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                                HorizontalAlignment="Center"
+                                                Content="Да"
+                                                Grid.Column="0">
+                                            <Button:Interaction.Behaviors>
+                                                <Button:CompositeCommandBehavior>
+                                                    <Button:CommandItem Command="{Binding DeleteSelected}"
+                                                                        CommandParameter="{Binding SelectedData}" />
+                                                    <Button:CommandItem Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" />
+                                                </Button:CompositeCommandBehavior>
+                                            </Button:Interaction.Behaviors>
+                                        </Button>
+
+                                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                                Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                                                HorizontalAlignment="Center"
+                                                Content="Нет"
+                                                Grid.Column="1" />
+                                    </Grid>
+                                </StackPanel>
+                            </Button.CommandParameter>
+                        </Button>
+                    </StackPanel>
+
+                    <TextBlock Text="{Binding SelectedData.Description}"
+                               Margin="10,5,5,5"
+                               TextWrapping="Wrap" />
+
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <materialDesign:Card Margin="10"
+                             Grid.Column="0"
+                             VerticalAlignment="Top"
+                             HorizontalAlignment="Right">
+            <Grid>
+                <ListBox ItemsSource="{Binding ImagePath}"
+                         ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                                                 Margin="10"
+                                                 HorizontalAlignment="Stretch">
+                                <Grid>
+
+                                    <Image Source="{Binding}"
+                                           Width="170">
+                                        <Image.InputBindings>
+                                            <MouseBinding Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                                                          Gesture="LeftClick">
+                                                <MouseBinding.CommandParameter>
+                                                    <StackPanel Margin="16"
+                                                                Orientation="Vertical">
+                                                        <Image Source="{Binding}"
+                                                               Stretch="Uniform"
+                                                               MaxHeight="700"
+                                                               MaxWidth="1000" />
+                                                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                                                Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                                                                HorizontalAlignment="Center"
+                                                                Content="Закрыть"
+                                                                Margin="0,5,0,0" />
+                                                    </StackPanel>
+                                                </MouseBinding.CommandParameter>
+                                            </MouseBinding>
+                                        </Image.InputBindings>
+                                    </Image>
+
+                                </Grid>
+                            </materialDesign:Card>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ListBox>
+
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</Page>
