@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackupViewer", "BackupViewer\BackupViewer.csproj", "{E525C37C-4E06-413D-811B-861E8D0C5207}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Update", "Update\Update.csproj", "{D84363EC-205F-4FC6-B3FD-31344A5D6732}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E525C37C-4E06-413D-811B-861E8D0C5207}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E525C37C-4E06-413D-811B-861E8D0C5207}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E525C37C-4E06-413D-811B-861E8D0C5207}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E525C37C-4E06-413D-811B-861E8D0C5207}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D84363EC-205F-4FC6-B3FD-31344A5D6732}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D84363EC-205F-4FC6-B3FD-31344A5D6732}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D84363EC-205F-4FC6-B3FD-31344A5D6732}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D84363EC-205F-4FC6-B3FD-31344A5D6732}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D7AFACA8-105B-49EE-AC8D-57CF8BD13548}
+	EndGlobalSection
+EndGlobal
